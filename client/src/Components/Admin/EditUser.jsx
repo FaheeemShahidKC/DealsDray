@@ -119,7 +119,7 @@ function EditUser() {
 
     if (validateName() && validateEmail() && validateNumber()) {
       updateUser(formData).then((data) => {
-        navigate('/admin/dashboard');
+        navigate('/dashboard');
       })
     }
   };

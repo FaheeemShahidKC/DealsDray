@@ -5,7 +5,7 @@ function AdminLoginAuth({children}) {
     const isAdmin = Boolean(localStorage.getItem('adminToken'));
     // console.log(isAdmin);
 
-  return isAdmin ? children : <Navigate to = '/admin/'/>
+  return isAdmin ? children : <Navigate to = '/'/>
 }
 
 export default AdminLoginAuth

@@ -56,7 +56,7 @@ function AddUser() {
     const userData = await addUserApi({ name, email, number, designation, course, gender})
 
     if (userData.status) {
-      navigate('/admin/dashboard')
+      navigate('/dashboard')
     } else {
       toast.error("user exist!!!")
     }

@@ -9,7 +9,6 @@ import { login } from '../../Api/AdminApi';
 import { useNavigate } from 'react-router-dom';
 function Login() {
   
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let navigate = useNavigate()
@@ -21,7 +20,7 @@ function Login() {
      console.log(adminData);
       if (adminData.status) {
         localStorage.setItem("adminToken",adminData.adminFound.data);
-        navigate('/admin/dashboard')
+        navigate('/dashboard')
 
       }else{
         console.log("hehe");

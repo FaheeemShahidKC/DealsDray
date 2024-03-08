@@ -29,7 +29,7 @@ function Table({ searchList, deleteuser }) {
                                    <td>{user.designation}</td>
                                    <td>{user.course}</td>
                                    <td>
-                                        <button onClick={() => navigate(`/admin/edituser/${user._id}`)} className='btn btn-primary mr-2'>edit</button>
+                                        <button onClick={() => navigate(`/edituser/${user._id}`)} className='btn btn-primary mr-2'>edit</button>
                                         <button onClick={() => deleteuser(user._id)} className='btn btn-primary'>delete</button>
                                    </td>
                               </tr>

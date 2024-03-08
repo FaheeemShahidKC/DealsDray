@@ -19,7 +19,7 @@ function NavBar({ obj }) {
   let navigate = useNavigate()
   function logOut() {
     localStorage.clear('adminToken')
-    navigate('/admin')
+    navigate('/')
   }
   return (
     <div>
@@ -28,7 +28,7 @@ function NavBar({ obj }) {
         <form class="form-inline">
           <input onChange={searchUser} class="form-control-sm border border-primary mr-3" type="search" placeholder="Search" aria-label="Search" />
           <button onClick={logOut} class="btn btn-outline-success my-2 my-sm-0" type="submit">LogOut</button>
-          <button onClick={() => navigate('/admin/adduser')} className='btn btn-outline-success ' >Add User</button>
+          <button onClick={() => navigate('/adduser')} className='btn btn-outline-success ' >Add User</button>
         </form>
 
       </nav>
