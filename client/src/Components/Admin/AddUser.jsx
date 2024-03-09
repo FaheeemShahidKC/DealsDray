@@ -44,15 +44,16 @@ function AddUser() {
     } else if (!validateEmail(email)) {
       console.log("validateEmail(email)");
       return setError("Invalid email format")
-    } else if (number.length < 10) {
+    } else if (number.length !== 10) {
       setError("Enter a valid number")
     } else if (designation.length === 0) {
       setError("Select the designation")
-    } else if (course === null) {
+    } else if (gender.length === 0) {
+      setError("Select the gender")
+    }else if (course === null) {
       setError("Select the course")
     }
 
-    console.log("jbb");
     const userData = await addUserApi({ name, email, number, designation, course, gender})
 
     if (userData.status) {
@@ -151,11 +152,11 @@ function AddUser() {
               <Checkbox onClick={() => handleCheckboxChange('BSC')} label="BSC" value="BSC" name="BSC" checked={course === 'BSC'} />
             </span>
           </div>
+          {error && <span style={{ color: "red", justifyContent: "center", alignItems: "center", display: "flex" }}>{error}</span>}
 
           <Button type="submit" className="mt-6" fullWidth>
             Add User
           </Button>
-          {error && <span style={{ color: "red", justifyContent: "center", alignItems: "center", display: "flex" }}>{error}</span>}
 
         </form>
       </Card>

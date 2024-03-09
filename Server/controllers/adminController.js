@@ -86,7 +86,7 @@ export const deleteUser = async (req, res) => {
 
 export const addUser = async (req, res) => {
     try {
-        let { name, email, number, password, designation, gender, course } = req.body;
+        let { name, email, number, designation, gender, course } = req.body;
 
         let userExist = await User.findOne({ email: email })
         console.log(userExist);
