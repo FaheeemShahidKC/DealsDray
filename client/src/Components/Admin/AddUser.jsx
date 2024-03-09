@@ -5,21 +5,21 @@ import {
   Typography,
   Checkbox,
   Radio
-} from "@material-tailwind/react";
-import toast, { Toaster } from 'react-hot-toast';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { addUserApi } from "../../Api/AdminApi";
+} from "@material-tailwind/react"
+import toast, { Toaster } from 'react-hot-toast'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { addUserApi } from "../../Api/AdminApi"
 import { validateEmail } from 'project-pack'
 
 function AddUser() {
   let navigate = useNavigate()
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [designation, setDesignation] = useState("");
-  const [course, setCourse] = useState(null);
-  const [gender, setGender] = useState("");
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [number, setNumber] = useState("")
+  const [designation, setDesignation] = useState("")
+  const [course, setCourse] = useState(null)
+  const [gender, setGender] = useState("")
   const [error, setError] = useState('')
 
   
@@ -28,11 +28,11 @@ function AddUser() {
   }
 
   const handleDesignationChange = (event) => {
-    setDesignation(event.target.value);
+    setDesignation(event.target.value)
   }
 
   const handleGenderChange = (event) => {
-    setGender(event.target.value);
+    setGender(event.target.value)
   }
 
   async function handleSubmit(e) {

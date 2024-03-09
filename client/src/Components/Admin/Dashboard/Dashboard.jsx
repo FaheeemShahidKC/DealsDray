@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import NavBar from '../NavBar/NavBar';
-import Table from '../Table/Table';
-import { deleteUser, userDetails } from '../../../Api/AdminApi';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import NavBar from '../NavBar/NavBar'
+import Table from '../Table/Table'
+import { deleteUser, userDetails } from '../../../Api/AdminApi'
 function Dashboard() {
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchList, setSearchList] = useState([]);
+  const [search, setSearch] = useState("")
+  const [searchList, setSearchList] = useState([])
   let obj = {
     search: search,
     setSearch: setSearch,
@@ -16,13 +15,13 @@ function Dashboard() {
   }
   const fetchUserData = async () => {
     try {
-      let userData = await userDetails();
-      setSearchList(userData.users);
+      let userData = await userDetails()
+      setSearchList(userData.users)
       setUsers(userData.users)
 
     } catch (error) {
 
-      console.error('Error fetching user data:', error);
+      console.error('Error fetching user data:', error)
     }
   };
 
@@ -44,7 +43,7 @@ function Dashboard() {
 
         deleteUser(id).then(() => {
 
-          fetchUserData();
+          fetchUserData()
         });
       }
     });
@@ -61,4 +60,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Dashboard

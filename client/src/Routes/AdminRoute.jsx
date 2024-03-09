@@ -5,7 +5,6 @@ import AddUserPage from '../Pages/Admin/AddUserPage'
 import AdminLoginAuth from '../Authentication/AdminLoginAuth'
 import AdminLogoutAuth from '../Authentication/AdminLogoutAuth'
 import Dashboard from '../Components/Admin/Dashboard/Dashboard'
-
 import EditPage from '../Pages/Admin/EditPage'
 
 function AdminRoute() {

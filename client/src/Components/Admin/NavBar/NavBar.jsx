@@ -30,7 +30,6 @@ function NavBar({ obj }) {
           <button onClick={logOut} class="btn btn-outline-success my-2 my-sm-0" type="submit">LogOut</button>
           <button onClick={() => navigate('/adduser')} className='btn btn-outline-success ' >Add User</button>
         </form>
-
       </nav>
     </div>
   )

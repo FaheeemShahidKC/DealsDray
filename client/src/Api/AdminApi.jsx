@@ -4,10 +4,10 @@ let AdminApi = axios.create({
 })
 export const login = async (signInData) => {
     try {
-        let loginData = await AdminApi.post('/login', signInData);
+        let loginData = await AdminApi.post('/login', signInData)
         return loginData.data
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message)
     }
 }
 
@@ -17,16 +17,16 @@ export const userDetails = async () => {
         return userData.data
 
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message)
     }
 }
 
 export const loadDetails = async (id) => {
     try {
-        let details = await AdminApi.post('/loaddetails', { id });
+        let details = await AdminApi.post('/loaddetails', { id })
         return details.data
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message)
     }
 }
 
