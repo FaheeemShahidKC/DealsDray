@@ -1,5 +1,4 @@
 import  express from "express";
-// import userRoute from "./routes/userRoute.js";
 import adminRoute from './routes/adminRoute.js'
 import connection from "./config/mongoose.config.js";
 import cors from 'cors'
@@ -21,7 +20,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('/', userRoute)
 app.use('/admin',adminRoute)
 
 app.listen(3000,() =>{

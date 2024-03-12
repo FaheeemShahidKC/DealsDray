@@ -9,6 +9,7 @@ function Table({ searchList, deleteuser }) {
                     <thead className='text-center'>
                          <tr className=''>
                               <th scope="col">ID</th>
+                              <th scope="col">profile</th>
                               <th scope="col">Created at</th>
                               <th scope="col">First name</th>
                               <th scope="col">Number</th>
@@ -23,6 +24,7 @@ function Table({ searchList, deleteuser }) {
                          {searchList.map((user, index) => (
                               <tr key={index}>
                                    <th scope="row">{index + 1}</th>
+                                   <td><div className='m-1 w-8 ' ><img src={`public/uploads/${user.image}`} alt="" /></div></td>
                                    <td>{user.createAt}</td>
                                    <td>{user.name}</td>
                                    <td>{user.number}</td>

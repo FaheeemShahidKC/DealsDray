@@ -87,9 +87,10 @@ export const deleteUser = async (req, res) => {
 export const addUser = async (req, res) => {
     try {
         let { name, email, number, designation, gender, course } = req.body;
+        const { filename } = req.file
 
         let userExist = await User.findOne({ email: email })
-        console.log(userExist);
+        console.log('userExist');
         if (userExist != null) {
             res.json({ status: false })
         } else {
@@ -100,6 +101,7 @@ export const addUser = async (req, res) => {
                 designation: designation,
                 gender: gender,
                 course: course,
+                image: filename
             })
             await newUser.save();
             res.json({ status: true })

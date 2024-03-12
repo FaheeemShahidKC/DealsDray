@@ -62,7 +62,26 @@ export const deleteUser = async (id) => {
     return afterDeleted.data
 }
 
-export const addUserApi = async (userDetails) => {
-    let data = await AdminApi.post('/adduser', userDetails)
-    return data.data
+// export const addUserApi = async (userDetails) => {
+//     let data = await AdminApi.post('/adduser', userDetails)
+//     return data.data
+// }
+export const addUserApi = async ({ name, email, number, designation, course, gender, image}) => {
+    const data = new FormData()
+    data.append("name", name)
+    data.append("email", email)
+    data.append("number", number)
+    data.append("designation", designation)
+    data.append("course", course)
+    data.append("gender", gender)
+    data.append("image", image)
+    const config = {
+        headers: {
+            "content-type": "multipart/form-data",
+            
+        },
+        withCredentials: true,
+    }
+    let addeddata = await AdminApi.post('/adduser', data, config)
+    return addeddata.data
 }

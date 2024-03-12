@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   course: {
-    type: String,
+    type: Array,
     required: true
   },
   is_Admin: {

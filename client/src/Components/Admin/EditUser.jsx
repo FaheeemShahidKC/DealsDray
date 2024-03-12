@@ -3,20 +3,22 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { loadDetails, updateUser } from '../../Api/AdminApi';
 import { Card, Typography, Input, Button } from '@material-tailwind/react';
 
-const Checkbox = ({ label, value, name, checked, onClick }) => {
+const Checkbox = ({ label, value, checked, onChange }) => {
   return (
-    <label>
-      <input
-        type="checkbox"
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={onClick}
-      />
-      {label}
-    </label>
+    <div>
+      <label>
+        <input
+          type="checkbox"
+          value={value}
+          checked={checked}
+          onChange={onChange}
+        />
+        {label}
+      </label>
+    </div>
   );
 };
+
 
 function EditUser() {
   const { id } = useParams();
@@ -29,7 +31,7 @@ function EditUser() {
     email: '',
     gender: '',
     designation: '',
-    course: ''
+    course: []
   });
 
   const [nameError, setNameError] = useState('');
@@ -69,12 +71,20 @@ function EditUser() {
     }));
   };
 
-  const handleCheckboxChange = (value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      course: value,
-    }));
-  };
+  const handleCheckboxChange = (value) => {    
+    setFormData((prevData) => {
+      const updatedCourse = prevData.course.includes(value)
+        ? prevData.course.filter((ele) => ele !== value)
+        : [...prevData.course, value];
+  
+      return {
+        ...prevData,
+        course: updatedCourse,
+      }
+    })
+  }
+  
+
 
   const validateName = () => {
     if (formData.name.trim() === '') {
@@ -228,9 +238,24 @@ function EditUser() {
               Course
             </Typography>
             <span>
-              <Checkbox onClick={() => handleCheckboxChange('MCA')} label="MCA" value="MCA" name="MCA" checked={formData.course === 'MCA'} /> <br />
-              <Checkbox onClick={() => handleCheckboxChange('BCA')} label="BCA" value="BCA" name="BCA" checked={formData.course === 'BCA'} /> <br />
-              <Checkbox onClick={() => handleCheckboxChange('BSC')} label="BSC" value="BSC" name="BSC" checked={formData.course === 'BSC'} /> <br />
+              <Checkbox
+                onChange={() => handleCheckboxChange('MCA')}
+                label="MCA"
+                value="MCA"
+                checked={formData.course.includes('MCA')}
+              />
+              <Checkbox
+                onChange={() => handleCheckboxChange('BCA')}
+                label="BCA"
+                value="BCA"
+                checked={formData.course.includes('BCA')}
+              /> <br />
+              <Checkbox
+                onChange={() => handleCheckboxChange('BSC')}
+                label="BSC"
+                value="BSC"
+                checked={formData.course.includes('BSC')}
+              /> <br />
             </span>
           </div>
           <Button className="mt-6" fullWidth type="submit">
@@ -242,9 +267,4 @@ function EditUser() {
   );
 }
 
-export default EditUser;
-
-
-
-
-
+export default EditUser

@@ -9,6 +9,7 @@ adminRoute.get('/userdetails', userDetails)
 adminRoute.post('/loaddetails', loadDetails)
 adminRoute.post('/updateuser', upload.single('image'), updateDetails)
 adminRoute.post('/delete', deleteUser)
-adminRoute.post('/adduser', addUser)
+adminRoute.post('/adduser',upload.single('image'), addUser)
+
 
 export default adminRoute

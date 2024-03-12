@@ -21,8 +21,9 @@ function AddUser() {
   const [course, setCourse] = useState(null)
   const [gender, setGender] = useState("")
   const [error, setError] = useState('')
+  const [image, setImage] = useState('')
 
-  
+
   const handleCheckboxChange = (value) => {
     setCourse(value)
   }
@@ -33,6 +34,12 @@ function AddUser() {
 
   const handleGenderChange = (event) => {
     setGender(event.target.value)
+  }
+
+  function handleImageChange(e) {
+    let file = e.target.files[0];
+    console.log(file);
+    setImage(file)
   }
 
   async function handleSubmit(e) {
@@ -50,11 +57,11 @@ function AddUser() {
       setError("Select the designation")
     } else if (gender.length === 0) {
       setError("Select the gender")
-    }else if (course === null) {
+    } else if (course === null) {
       setError("Select the course")
     }
 
-    const userData = await addUserApi({ name, email, number, designation, course, gender})
+    const userData = await addUserApi({ name, email, number, designation, course, gender, image })
 
     if (userData.status) {
       navigate('/dashboard')
@@ -62,7 +69,7 @@ function AddUser() {
       toast.error("user exist!!!")
     }
   }
-  
+
   return (
     <div className="flex items-center justify-center h-screen bg-white">
       <Toaster
@@ -72,6 +79,18 @@ function AddUser() {
       <Card color="transparent" shadow={false}>
         <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
           <div className="mb-1 flex flex-col gap-6">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Profile
+            </Typography>
+            <Input onChange={handleImageChange}
+              type="file"
+              size="lg"
+              placeholder="name"
+              // className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Name
             </Typography>
